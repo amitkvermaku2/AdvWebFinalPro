@@ -20,8 +20,8 @@ public class SellerServiceImpl implements SellerService {
     }
 
     @Override
-    public Seller getSellerById(Long id) {
-        return sellerRepository.findById(id).get();
+    public Seller getSellerById(Long sellerId) {
+        return sellerRepository.findById(sellerId).get();
     }
 
     @Override

@@ -1,7 +1,9 @@
 package com.uab.seller;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+@Entity
 public class Seller {
   
 	private String businessName;
@@ -12,7 +14,7 @@ public class Seller {
 	private String category;
 	private String license;
 	@Id
-	private Long id;
+	private Long sellerId;
 	private String password;
 	private String role;
 	public String getBusinessName() {
@@ -57,11 +59,11 @@ public class Seller {
 	public void setLicense(String license) {
 		this.license = license;
 	}
-	public Long getId() {
-		return id;
+	public Long getSellerId() {
+		return sellerId;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setSellerId(Long sellerId) {
+		this.sellerId = sellerId;
 	}
 	public String getPassword() {
 		return password;
@@ -79,10 +81,10 @@ public class Seller {
 	public String toString() {
 		return "Seller [businessName=" + businessName + ", businessAddress=" + businessAddress + ", bContsct="
 				+ bContsct + ", bEmail=" + bEmail + ", bSSN=" + bSSN + ", category=" + category + ", license=" + license
-				+ ", id=" + id + ", password=" + password + ", role=" + role + "]";
+				+ ", sellerId=" + sellerId + ", password=" + password + ", role=" + role + "]";
 	}
 	public Seller(String businessName, String businessAddress, String bContsct, String bEmail, String bSSN,
-			String category, String license, Long id, String password, String role) {
+			String category, String license, Long sellerId, String password, String role) {
 		super();
 		this.businessName = businessName;
 		this.businessAddress = businessAddress;
@@ -91,7 +93,7 @@ public class Seller {
 		this.bSSN = bSSN;
 		this.category = category;
 		this.license = license;
-		this.id = id;
+		this.sellerId = sellerId;
 		this.password = password;
 		this.role = role;
 	}

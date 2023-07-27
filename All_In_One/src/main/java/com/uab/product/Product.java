@@ -8,17 +8,16 @@ import jakarta.persistence.Lob;
 @Entity
 public class Product {
 	@Id
-	private Long id;
+	private Long idProduct;
 	private String name;
 	private String description;
 	private String price;
-	@Lob
-    private byte[] imageData;
-	public Long getId() {
-		return id;
+	private String sellerId;
+	public Long getIdProduct() {
+		return idProduct;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdProduct(Long idProduct) {
+		this.idProduct = idProduct;
 	}
 	public String getName() {
 		return name;
@@ -38,29 +37,28 @@ public class Product {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	public byte[] getImageData() {
-		return imageData;
+	public String getSellerId() {
+		return sellerId;
 	}
-	public void setImageData(byte[] imageData) {
-		this.imageData = imageData;
+	public void setSellerId(String sellerId) {
+		this.sellerId = sellerId;
 	}
-	@Override
-	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
-				+ ", imageData=" + Arrays.toString(imageData) + "]";
-	}
-	public Product(Long id, String name, String description, String price, byte[] imageData) {
+	public Product(Long idProduct, String name, String description, String price, String sellerId) {
 		super();
-		this.id = id;
+		this.idProduct = idProduct;
 		this.name = name;
 		this.description = description;
 		this.price = price;
-		this.imageData = imageData;
+		this.sellerId = sellerId;
+	}
+	@Override
+	public String toString() {
+		return "Product [idProduct=" + idProduct + ", name=" + name + ", description=" + description + ", price="
+				+ price + ", sellerId=" + sellerId + "]";
 	}
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 	
 }
