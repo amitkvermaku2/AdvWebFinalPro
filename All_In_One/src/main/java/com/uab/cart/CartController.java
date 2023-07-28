@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.uab.user.User;
+
 @RestController
 public class CartController {
 
@@ -33,9 +35,15 @@ public class CartController {
     }
 
     @PutMapping("/updateCarts/{id}")
-    public ResponseEntity<Cart> updateCart(@PathVariable("id") Long userId,
+    public ResponseEntity<Cart> updateCart(@PathVariable("id") Long cartId,
                                            @RequestBody Cart cart){
-       return null;
+    	Cart existingCart = cartService.getCartById(cartId);
+
+        if (existingCart == null) {
+            return ResponseEntity.notFound().build();
+        }
+        Cart updatedCart = cartService.updateCart(cart);
+        return ResponseEntity.ok(updatedCart);
     }
 
     @DeleteMapping("/deleteCart/{id}")

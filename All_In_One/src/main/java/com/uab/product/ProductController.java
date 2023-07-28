@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.uab.user.User;
+
 @RestController
 public class ProductController {
 
@@ -32,7 +34,13 @@ public class ProductController {
     @PutMapping("/updateProductById/{id}")
     public ResponseEntity<Product> updateProduct(@PathVariable("id") Long productId,
                                            @RequestBody Product product){
-       return null;
+    	Product existingProduct = productService.getProductById(productId);
+
+        if (existingProduct == null) {
+            return ResponseEntity.notFound().build();
+        }
+        Product updatedProduct = productService.updateProduct(product);
+        return ResponseEntity.ok(updatedProduct);
     }
 
     @DeleteMapping("deleteProduct/{id}")

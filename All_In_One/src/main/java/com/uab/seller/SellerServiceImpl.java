@@ -32,7 +32,7 @@ public class SellerServiceImpl implements SellerService {
     @Override
     public Seller updateSeller(Seller seller) {
     	seller.setRole("seller");
-        return null;
+    	return sellerRepository.save(seller);
     }
 
     @Override

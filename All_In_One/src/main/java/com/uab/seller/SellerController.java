@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.uab.user.User;
+
 @RestController
 public class SellerController {
 
@@ -35,7 +37,13 @@ public class SellerController {
     @PutMapping("/updateSeller/{id}")
     public ResponseEntity<Seller> updateSeller(@PathVariable("id") Long sellerId,
                                            @RequestBody Seller seller){
-       return null;
+    	Seller existingSeller = sellerService.getSellerById(sellerId);
+
+        if (existingSeller == null) {
+            return ResponseEntity.notFound().build();
+        }
+        Seller updatedSeller = sellerService.updateSeller(seller);
+        return ResponseEntity.ok(updatedSeller);
     }
 
     @DeleteMapping("/deleteSeller/{id}")

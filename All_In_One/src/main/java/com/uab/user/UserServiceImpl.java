@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User updateUser(User user) {
     	user.setRole("user");
-        return null;
+    	return userRepository.save(user);
     }
 
     @Override

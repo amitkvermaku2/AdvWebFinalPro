@@ -29,7 +29,7 @@ public class CardServiceImpl implements CartService {
 
     @Override
     public Cart updateCart(Cart cart) {
-        return null;
+    	return cartRepository.save(cart);
     }
 
     @Override
