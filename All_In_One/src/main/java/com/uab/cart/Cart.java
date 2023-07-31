@@ -1,5 +1,6 @@
 package com.uab.cart;
 
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -15,39 +16,48 @@ public class Cart {
 	@Id
 	private Long userId;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId")
-	private List<Items> products;
+	
+	private Integer longArray[];
+
 
 	public Long getUserId() {
 		return userId;
 	}
 
+
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
-	public List<Items> getProducts() {
-		return products;
+
+	public Integer[] getLongArray() {
+		return longArray;
 	}
 
-	public void setProducts(List<Items> products) {
-		this.products = products;
+
+	public void setLongArray(Integer[] longArray) {
+		this.longArray = longArray;
 	}
 
-	public Cart(Long userId, List<Items> products) {
+
+	public Cart(Long userId, Integer[] longArray) {
 		super();
 		this.userId = userId;
-		this.products = products;
+		this.longArray = longArray;
 	}
+
 
 	public Cart() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	
+
+
+	@Override
+	public String toString() {
+		return "Cart [userId=" + userId + ", longArray=" + Arrays.toString(longArray) + "]";
+	}
+
 	
 	
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import com.uab.user.User;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductController {
 
 	@Autowired
@@ -41,6 +42,22 @@ public class ProductController {
         }
         Product updatedProduct = productService.updateProduct(product);
         return ResponseEntity.ok(updatedProduct);
+    }
+    
+    @GetMapping("/getProductByIdCHeck/{id}/{sid}")
+    public ResponseEntity<Product> getProductByIdCheck(@PathVariable("id") Long productId, @PathVariable("sid") Long sellerId){
+        Product product = productService.getProductById(productId);
+        if(product.getSellerId().equals(sellerId)) {
+        return new ResponseEntity<>(product, HttpStatus.OK);}
+        else {
+        	return ResponseEntity.badRequest().body(null);
+        }
+    }
+    
+    @GetMapping("/getAllProductsById/{sellerId}")
+    public ResponseEntity<List<Product>> getAllProductById(@PathVariable("sellerId") Long sellerId){
+        List<Product> products = productService.getAllProductsBySellerId(sellerId);
+        return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
     @DeleteMapping("deleteProduct/{id}")

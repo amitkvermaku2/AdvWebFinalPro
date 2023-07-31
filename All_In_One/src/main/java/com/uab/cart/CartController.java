@@ -8,9 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.uab.product.Product;
 import com.uab.user.User;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class CartController {
 
 	@Autowired
@@ -25,6 +27,12 @@ public class CartController {
     @GetMapping("/getCartById/{id}")
     public ResponseEntity<Cart> getCartById(@PathVariable("id") Long userId){
         Cart cart = cartService.getCartById(userId);
+        return new ResponseEntity<>(cart, HttpStatus.OK);
+    }
+    
+    @GetMapping("/getCartOrderById/{id}")
+    public ResponseEntity<List<Product>> getCartOrderById(@PathVariable("id") Long userId){
+        List<Product> cart = cartService.getCartByOrerId(userId);
         return new ResponseEntity<>(cart, HttpStatus.OK);
     }
 

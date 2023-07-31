@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import com.uab.user.User;
 
 @RestController
+@CrossOrigin
 public class SellerController {
 
 	@Autowired

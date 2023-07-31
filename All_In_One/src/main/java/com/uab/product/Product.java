@@ -3,6 +3,8 @@ package com.uab.product;
 import java.util.Arrays;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 @Entity
@@ -12,7 +14,7 @@ public class Product {
 	private String name;
 	private String description;
 	private String price;
-	private String sellerId;
+	private Long sellerId;
 	public Long getIdProduct() {
 		return idProduct;
 	}
@@ -37,13 +39,13 @@ public class Product {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	public String getSellerId() {
+	public Long getSellerId() {
 		return sellerId;
 	}
-	public void setSellerId(String sellerId) {
+	public void setSellerId(Long sellerId) {
 		this.sellerId = sellerId;
 	}
-	public Product(Long idProduct, String name, String description, String price, String sellerId) {
+	public Product(Long idProduct, String name, String description, String price, Long sellerId) {
 		super();
 		this.idProduct = idProduct;
 		this.name = name;

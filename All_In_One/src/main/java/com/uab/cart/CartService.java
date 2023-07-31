@@ -1,5 +1,7 @@
 package com.uab.cart;
 import java.util.List;
+
+import com.uab.product.Product;
 public interface CartService {
 
 	Cart createCart(Cart cart);
@@ -12,4 +14,5 @@ public interface CartService {
 
     void deleteCart(Long userId);
     
+    List<Product> getCartByOrerId(Long userId);
 }

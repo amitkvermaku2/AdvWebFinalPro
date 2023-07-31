@@ -24,7 +24,7 @@ public class LoginAuthentication {
 	
 	@PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody UserValue userValue) {
-        User user = userService.findByUsername(userValue.getUname());
+        User user = userService.getUserById(userValue.getUname());
 
         if (user != null && user.getUserPassword().equals(userValue.getUpassword())) {
             return ResponseEntity.ok("successful");
