@@ -1,5 +1,6 @@
 package com.uab.placeorder;
 
+import java.util.Arrays;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -13,8 +14,8 @@ public class PlaceOrder {
 	private Long orderId;
 	private String time;
 	private String date;
-	private List<String> productIds;
-	private String userId;
+	private Integer longArray[];
+	private Long userId;
 	public Long getOrderId() {
 		return orderId;
 	}
@@ -33,24 +34,24 @@ public class PlaceOrder {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public List<String> getProductIds() {
-		return productIds;
+	public Integer[] getLongArray() {
+		return longArray;
 	}
-	public void setProductIds(List<String> productIds) {
-		this.productIds = productIds;
+	public void setLongArray(Integer[] longArray) {
+		this.longArray = longArray;
 	}
-	public String getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-	public PlaceOrder(Long orderId, String time, String date, List<String> productIds, String userId) {
+	public PlaceOrder(Long orderId, String time, String date, Integer[] longArray, Long userId) {
 		super();
 		this.orderId = orderId;
 		this.time = time;
 		this.date = date;
-		this.productIds = productIds;
+		this.longArray = longArray;
 		this.userId = userId;
 	}
 	public PlaceOrder() {
@@ -59,8 +60,8 @@ public class PlaceOrder {
 	}
 	@Override
 	public String toString() {
-		return "PlaceOrder [orderId=" + orderId + ", time=" + time + ", date=" + date + ", productIds=" + productIds
-				+ ", userId=" + userId + "]";
+		return "PlaceOrder [orderId=" + orderId + ", time=" + time + ", date=" + date + ", longArray="
+				+ Arrays.toString(longArray) + ", userId=" + userId + "]";
 	}
 	
 	
